@@ -4,6 +4,17 @@ const candidatosRoutes = Router();
 
 let usuarios = []
 
+class ClubeDeLeitura {
+    constructor(id, nomeClube, statusLeitura, participantes, avaliacaoLivro) {
+        this.id = id;
+        this.nomeClube = nomeClube;
+        this.statusLeitura = statusLeitura;
+        this.participantes = participantes;
+        this.avaliacaoLivro = avaliacaoLivro;
+    }
+}
+
+
 usuariosRoutes.get("/", (req, res) => {
     return res.status(200).json({
         message:
