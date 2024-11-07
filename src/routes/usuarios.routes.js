@@ -45,22 +45,25 @@ const {
 } = req.body;
 
 if (!nomeClube) {
-    return res.status(400).send({ message: "Coloque um nome para o suspeito" })
+    return res.status(400).send({ message: "Coloque um nome do clube" })
 }
 
-if (!statusLeitura) {
-    return res.status(400).send({ message: "Coloque uma profissão" })
+const validStatus = ["pendente", "iniciado", "finalizado"];
+if (!statusLeitura || !validStatus.includes(statusLeitura)) {
+    return res.status(400).send({ message: "Coloque um status de leitura válido (pendente, iniciado, finalizado)" });
 }
 
-if (participantes) {
-    return res.status(400).send({ message: "Coloque o nivel de suspeita" })
+if (!participantes || participantes < 2) {
+    return res.status(400).send({ message: "Coloque pelo menos 2 participantes" });
 }
 
 {if (avaliacaoLivro) {
-    return res.status(400).send({ message: "Coloque o nivel de suspeita" })
+    return res.status(400).send({ message: "Coloque a validação do livro" })
 }
 
 }
+
+
 });
 
 
