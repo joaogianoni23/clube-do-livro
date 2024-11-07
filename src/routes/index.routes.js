@@ -1,7 +1,5 @@
 import { Router } from "express";
-
-// Lista de importação das rotas do projeto
-import usuariosRoutes from "./usuarios.routes.js"
+import clubeRoutes from "./usuarios.routes.js";
 
 const routes = Router();
 
@@ -11,6 +9,6 @@ routes.get("/", (req, res) => {
 });
 
 // Lista de uso das rotas do projeto
-routes.use("/usuarios", usuariosRoutes);
+routes.use("/usuarios", clubeRoutes);
 
 export default routes;

@@ -1,9 +1,29 @@
 import { Router } from "express";
 
-const candidatosRoutes = Router();
+const clubeRoutes = Router();
 
-let usuarios = []
+// Defina suas rotas aqui
+clubeRoutes.get('/clubes', (req, res) => {
+    // Lógica para obter os clubes de leitura
+    res.json([
+        {
+            id: 4,
+            nomeClube: "Ana",
+            statusLeitura: true,
+            participantes: 20,
+            avaliacaoLivro: 2,
+        },
+        {
+            id: 5,
+            nomeClube: "Pedro",
+            statusLeitura: true,
+            participantes: 25,
+            avaliacaoLivro: 1,
+        }
+    ]);
+});
 
+// Classe ClubeDeLeitura
 class ClubeDeLeitura {
     constructor(id, nomeClube, statusLeitura, participantes, avaliacaoLivro) {
         this.id = id;
@@ -14,14 +34,12 @@ class ClubeDeLeitura {
     }
 }
 
-
-usuariosRoutes.get("/", (req, res) => {
+// Outra rota de exemplo
+clubeRoutes.get("/", (req, res) => {
     return res.status(200).json({
-        message:
-        usuarios.length == 0
-        ? "Não há usuários cadastrados" : `Total de usuários: ${usuarios.length}`,
-        usuarios,
+        message: "Bem-vindo ao Clube de Leitura!",
     });
 });
 
-export default candidatosRoutes;
+// Exporte o router para ser usado em outros arquivos
+export default clubeRoutes;
